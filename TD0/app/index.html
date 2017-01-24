@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html ng-app="noteApp" lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="noteApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="noteApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="noteApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NoteApp</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body ng-controller="NoteController as Notectrl">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Ex 1 : Note Application</div>
+    <div class="panel-body">
+  <div class="form-group">
+    <textarea name="message" id="message" class="form-control" maxlength="100"></textarea><br>
+    <button type="button" class="btn btn-primary btn-lg active">Enregistrer</button>&nbsp
+    <button type="button" class="btn btn-primary btn-lg active">Effacer</button>
+    <div>
+      <br>
+      <p class="bg-info" ng-change="save()">Nombre de caractères restants {{Notectrl.count()}}</p>
+      <p class="bg-warning">yolo</p>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+</html>
