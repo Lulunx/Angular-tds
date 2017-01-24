@@ -1,13 +1,14 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app=angular.module('noteApp', []);
-app.controller("NoteController", function(){
+var noteApp=angular.module('noteApp', []);
+noteApp.controller("NoteController", function(){
     this.messageNote="";
     this.info="";
+    var self=this;
 
-    this.save = function(message) {
-        this.messageNote = message;
+    this.save = function() {
+        this.messageNote = "qqchose ?";
     };
 
     this.clear = function() {
@@ -15,6 +16,6 @@ app.controller("NoteController", function(){
     };
 
     this.count = function(){
-      return 100-messageNote.length();
+      return 100-self.messageNote.length;
     };
 });
