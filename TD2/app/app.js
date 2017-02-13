@@ -80,4 +80,13 @@ ListesApp.controller("ListesController",function(){
             self.items.push(self.includedItems[i])
         self.includedItems=[];
     };
+
+    this.Verif=function(){
+        if(self.step==2)
+            self.step=1;
+        else{
+            if(self.includedItems.length>0)
+                self.step=2;
+        }
+    };
 });
