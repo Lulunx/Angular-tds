@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="ServicesApp">
+    <head>
+      <meta charset="utf-8">
+      <title>NoteApp</title>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+      <script src="app.js"></script>
+    </head>
+
+    <body>
+        <div class="panel panel-primary" data-ng-controller="ServicesController as Servicesctrl" style="margin-left:10%;margin-right:10%;margin-top:2%">
+            <form id="Services">
+                <h1 style="text-align: center">Services</h1>
+                    <div class="alert alert-info">
+                        <span>Choisissez les éléments à inclure</span>
+                        <p>
+                            <ng-pluralize count="count" when="{0:'Aucun service sélectionné',
+                                                1:'1 service sélectionné',
+                                                'other':'{} services sélectionnés'}"></ng-pluralize>
+                        </p>
+                    </div>
+                    <ul>
+                        <li ng-class="service.active ? 'on' : 'off'" ng-click="Servicesctrl.toggleActive(service)" ng-repeat="service in Servicesctrl.services">{{service.name}}   {{service.price}}</li>
+                    </ul>
+            </form>
+        </div>
+    </body>
+</html>

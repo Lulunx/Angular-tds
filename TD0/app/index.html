@@ -6,11 +6,12 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.min.js"></script>
   <script src="app.js"></script>
 </head>
 
 <body>
-  <div class="panel panel-primary" data-ng-controller="NoteController as Notectrl">
+  <div class="panel panel-primary" data-ng-controller="NoteController as Notectrl" style="width:50% ; margin-top:5% ; margin-left:25%">
     <div class="panel-heading">Ex 1 : Note Application</div>
     <div class="panel-body">
       <div class="form-group">
@@ -18,8 +19,8 @@
         <button type="button" class="btn btn-primary btn-lg active" data-ng-click="Notectrl.save()">Enregistrer</button>&nbsp
         <button type="button" class="btn btn-primary btn-lg active" data-ng-click="Notectrl.clear()">Effacer</button>
         <br><br>
-        <p class="bg-info">Nombre de caractères restants : {{Notectrl.count()}}</p>
-        <p class="bg-warning">yolo</p>
+        <p class="bg-info">Nombre de caractères restants : {{Notectrl.compte}}</p>
+        <p data-ng-class="Notectrl.affich()">{{Notectrl.infos()}}</p>
     </div>
   </div>
   </div>
