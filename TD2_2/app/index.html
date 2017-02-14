@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="ContactApp">
+<head>
+  <meta charset="utf-8">
+  <title>Contacts</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+  <body>
+    <div class="panel panel-primary" data-ng-controller="ContactController as Contactctrl" style="width:75% ; margin-top:5% ; margin-left:15%">
+      <div class="panel-heading">Contact</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="ui input focus" style="padding-top: 10px;width: 100%">
+              <input type="text" placeholder="Filtrer ...." ng-model="filtre">
+            </div>
+            <table style="width:100%" class="ui celled table">
+                <tr ng-repeat="contact in Contactctrl.contacts |filtring|filter : filtre as results">
+                  <td>
+                    {{contact.lastname}}
+                  </td>
+                  <td>
+                    {{contact.firstname}}
+                  </td>
+                  <td>
+                    {{contact.mail}}
+                  </td>
+                  <td>
+                    <button class="blue ui icon button" ng-click="Contactctrl.toUpdate(contact)">
+                      <i class="edit icon"></i>
+                    </button>
+                    <button class="red ui icon button" ng-click="Contactctrl.delete(contact)">
+                      <i class="remove circle icon"></i>
+                    </button>
+                  </td>
+                </tr>
+            </table>
+          </div>
+          <button class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.toAdd()">
+            Ajouter ...
+          </button>
+          <button class="red ui button" style="margin-left: 2%" ng-click="Contactctrl.annulersuppressions()" ng-show="Contactctrl.supression==1">
+            Annuler la suppression
+          </button>
+
+          <div style="margin-top: 3%" ng-show="Contactctrl.visible==1">
+            <p class="ui dividing header">{{Contactctrl.operation}} un contact</p>
+            <div class="ui input">
+              <input type="text" placeholder="Entrez un nom...">
+            </div>
+            <div class="ui input">
+              <input type="text" placeholder="Prénom...">
+            </div>
+            <div class="ui input">
+              <input type="text" placeholder="Adresse mail...">
+            </div>
+            <button class="blue ui button" style="margin-left: 2%">
+              Valider
+            </button>
+            <button class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.visible=0">
+              Annuler
+            </button>
+          </div>
+
+          <p style="padding-left: 2%;margin-top:1%">
+            <ng-pluralize count="results.length" when="{0:'Aucun résultat',
+                                                  1:'1 contact trouvé',
+                                                  'other':'{} contacts trouvés'}"></ng-pluralize>
+          </p>
+          <p ng-repeat="contact in Contactctrl.contacts">i {{contact.firstname}}{{ contact.deleted}}</p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
