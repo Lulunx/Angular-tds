@@ -42,36 +42,37 @@
           <button class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.toAdd()">
             Ajouter ...
           </button>
+
+
           <button class="red ui button" style="margin-left: 2%" ng-click="Contactctrl.annulersuppressions()" ng-show="Contactctrl.supression==1">
-            Annuler la suppression
+            <ng-pluralize count="Contactctrl.contacts.length-results.length" when="{1:'Annuler la suppression',
+                                                  'other':'Annuler les suppressions ({})'}"></ng-pluralize>
           </button>
 
+          <form>
           <div style="margin-top: 3%" ng-show="Contactctrl.visible==1">
             <p class="ui dividing header">{{Contactctrl.operation}} un contact</p>
             <div class="ui input">
-              <input type="text" placeholder="Entrez un nom...">
+              <input type="text" placeholder="Entrez un nom..." ng-model="Contactctrl.tmpcontact.lastname">
             </div>
             <div class="ui input">
-              <input type="text" placeholder="Prénom...">
+              <input type="text" placeholder="Prénom..." ng-model="Contactctrl.tmpcontact.firstname">
             </div>
             <div class="ui input">
-              <input type="text" placeholder="Adresse mail...">
+              <input type="email" placeholder="Adresse mail..." ng-model="Contactctrl.tmpcontact.mail">
             </div>
-            <button class="blue ui button" style="margin-left: 2%">
+            <button class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.add()">
               Valider
             </button>
-            <button class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.visible=0">
-              Annuler
-            </button>
+            <input type="reset" class="blue ui button" style="margin-left: 2%" ng-click="Contactctrl.visible=0" value="Annuler">
           </div>
+          </form>
 
           <p style="padding-left: 2%;margin-top:1%">
             <ng-pluralize count="results.length" when="{0:'Aucun résultat',
                                                   1:'1 contact trouvé',
                                                   'other':'{} contacts trouvés'}"></ng-pluralize>
           </p>
-          <p ng-repeat="contact in Contactctrl.contacts">i {{contact.firstname}}{{ contact.deleted}}</p>
-
         </div>
       </div>
     </div>

@@ -12,9 +12,9 @@
 
 <body>
   <div class="panel panel-primary" data-ng-controller="NoteController as Notectrl" style="width:50% ; margin-top:5% ; margin-left:25%">
-    <div class="panel-heading">Ex 1 : Note Application</div>
-    <div class="panel-body">
-      <div class="form-group">
+        <div class="panel-heading">Ex 1 : Note Application</div>
+        <div class="panel-body">
+          <div class="form-group">
         <textarea name="message" id="message" class="form-control" maxlength="100" data-ng-change="Notectrl.count()" data-ng-model="Notectrl.messageNote"></textarea><br>
         <button type="button" class="btn btn-primary btn-lg active" data-ng-click="Notectrl.save()">Enregistrer</button>&nbsp
         <button type="button" class="btn btn-primary btn-lg active" data-ng-click="Notectrl.clear()">Effacer</button>
