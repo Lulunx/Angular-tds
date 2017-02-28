@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="CurrencyApp">
+<head>
+  <meta charset="utf-8">
+  <title>Changes</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <div class="panel panel-primary" data-ng-controller="CurrencyController as Currencyctrl" style="width:75% ; margin-top:5% ; margin-left:15%">
+    <div class="panel-heading">Changes</div>
+      <div class="panel-body">
+        <table>
+          <tr>
+            <td style="padding-right: 3%">
+              <input type="text" data-ng-model="Currencyctrl.what" size="10" class="form-control">
+            </td>
+            <td style="padding-right: 1.5%">
+              <select data-ng-model="Currencyctrl.from" data-ng-options="v.code + ' - ' + v.name for (k, v) in Currencyctrl.currencies" class="form-control ng-valid"></select>
+            </td>
+            <td>
+              <a href="#" data-ng-click="Currencyctrl.swap()">↔</a>
+            </td>
+            <td style="padding-left: 1.5%;padding-right: 3%">
+              <select data-ng-model="Currencyctrl.to" data-ng-options="v.code + ' - ' + v.name for (k, v) in Currencyctrl.currencies" class="form-control ng-valid"></select>
+            </td>
+            <td>
+              <input class="blue ui button" type="button" value="Convertir" data-ng-click="Currencyctrl.getResult()"/>
+            </td>
+            <td style="padding-left: 3%; padding-right: 3%">
+              <input data-ng-model="Currencyctrl.result" type="text" class="form-control ng-pristine ng-valid ng-touched" readonly="readonly">
+            </td>
+            <td>
+              <input type="checkbox" data-ng-model="Currencyctrl.histo"> Historique
+            </td>
+          </tr>
+        </table>
+        <div ng-show="Currencyctrl.histo">
+        </br></br>
+          <div class="panel-body">
+            <table class="ui celled table">
+              <thead>
+                <td>
+                  De
+                </td>
+                <td>
+                  En
+                </td>
+                <td>
+                  Tx
+                </td>
+                <td>
+                  Montant
+                </td>
+                <td>
+                  Date
+                </td>
+                <td>
+                  Delta
+                </td>
+                <td>
+
+                </td>
+              </thead>
+              <tbody>
+                <tr ng-repeat="histo in Currencyctrl.listeconversions">
+                    <td>
+                        {{histo.from}}
+                    </td>
+                    <td>
+                        {{histo.to}}
+                    </td>
+                    <td>
+                        {{histo.rate}}
+                    </td>
+                    <td>
+                        {{histo.amount}}
+                    </td>
+                    <td>
+                        {{histo.date}}
+                    </td>
+                    <td>
+                        {{(histo.initialAmount-histo.amount)}}
+                    </td>
+                    <td>
+                        truc
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
